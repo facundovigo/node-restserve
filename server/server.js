@@ -11,7 +11,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./rutas/usuario'))
+// app.use(require('./rutas/usuario'))
+// app.use(require('./rutas/login'))
+
+//configuracion global de rutas
+app.use(require('./rutas/index'))
 
 //conexion a la bbdd
 

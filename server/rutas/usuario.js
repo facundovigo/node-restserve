@@ -3,11 +3,17 @@ const app = express();
 
 const bcrypt = require('bcrypt');
 const Usuario = require('../models/usuario');
-const { execSync } = require('child_process');
+const { VerificaToken, VerificaAdmin_role } = require('../middlewares/autenticacion')
+    //const { execSync } = require('child_process');
 
 
-app.get('/usuario', function(req, res) {
+app.get('/usuario', VerificaToken, (req, res) => {
 
+    // return res.json({
+    //         usuario: req.usuario,
+    //         nombre: req.usuario.nombre,
+    //         email: req.usuario.email,
+    //     })
     // res.json('Get Prueba');
 
     // {estado: true}
@@ -40,7 +46,7 @@ app.get('/usuario', function(req, res) {
         })
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [VerificaToken, VerificaAdmin_role], function(req, res) {
 
     let body = req.body;
 
@@ -66,7 +72,7 @@ app.post('/usuario', function(req, res) {
     });
 });
 
-app.put('/usuario:id', function(req, res) {
+app.put('/usuario:id', [VerificaToken, VerificaAdmin_role], function(req, res) {
 
     let id = req.params.id;
     let body = req.body;
@@ -87,7 +93,7 @@ app.put('/usuario:id', function(req, res) {
     });
 });
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', [VerificaToken, VerificaAdmin_role], function(req, res) {
 
     let id = req.params.id;
 
