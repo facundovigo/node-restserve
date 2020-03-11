@@ -39,3 +39,10 @@ urlDB = 'mongodb+srv://fvigo:7132NzxlbNPTR6sM@cluster0-2qfmf.mongodb.net/cafe'
     //}
 
 process.env.URLDB = urlDB;
+
+
+//=============================
+//Google client ID
+//=============================
+
+process.env.CLIENT_ID = '1066576677869-88571eof9o7ha1oroet18hj8ivnqcu7j.apps.googleusercontent.com' || process.env.CLIENT_ID;
